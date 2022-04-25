@@ -1,0 +1,9 @@
+html, body{
+    font-family: 'Montserrat', sans-serif !important;
+    /* color:red !important; */
+
+}
+
+.main_container{
+    min-width: 80vh !important;
+}
