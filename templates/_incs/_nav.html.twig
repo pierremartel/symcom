@@ -14,9 +14,12 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Nos Produits</a>
         </li>
+
+        {% if is_granted('ROLE_USER') %}
         <li class="nav-item">
-          <a class="nav-link" href="#">A Propos</a>
+          <a class="nav-link" href="#">Profil</a>
         </li>
+        {% endif %}
 
           {% include '_incs/_cat_nav.html.twig' %}
         
@@ -35,6 +38,31 @@
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
+
+    <nav class="navbar">
+
+      <ul class="navbar-nav navbar-right">
+
+        {% if not app.user %}
+
+        <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link"> <i class="fa-solid fa-arrow-right-to-bracket"></i> 
+        <small class="test-white">Connexion</small></a></li>
+
+        <li class="nav-item"><a href="{{ path('app_register') }}" class="nav-link"> <i class="fa-solid fa-arrow-right-to-bracket"> &nbsp;</i> 
+        <small class="test-white">Inscription</small></a></li>
+
+        {% else %}
+
+        <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link"> <i class="fa-solid fa-power-off"></i> 
+        <small class="test-white">Deconnexion</small></a></li>
+
+        {% endif %}
+    
+      </ul>
+    
+    
+    </nav>
+
   </div>
 </nav>
 
